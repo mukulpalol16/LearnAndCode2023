@@ -6,25 +6,20 @@
         {
             try
             {
-                var email = new EmailModel
-                {
-                    EmailId = "abc@xyz.com",
-                    SpamQuantity = 10,
-                    ShortEmailOnLaptopQuantity = 10,
-                    ShortEmailOnPhoneQuantity = 10,
-                    LongEmailOnLaptopQuantity = 10,
-                    EmailBlastQuantity = 10
-                };
+                EmailEntity emailEntity = new EmailEntity();
+                emailEntity.GetDetails();
 
-                var calculator = new CarbonFootprintCalculator();
-                var result = calculator.CalculateCarbonFootprint(email);
-                result.DisplayEmailCarbonFootprint();
+                ICarbonFootprintCalculator carbonFootprintCalculator = new EmailCarbonFootprintCalculator();
+                EmailEntityResponse emailEntityResponse = carbonFootprintCalculator.CalculateCarbonFootprint(emailEntity);
+
+                emailEntityResponse.Display();
 
                 Console.ReadLine();
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                Console.WriteLine("Some Error Occured!");
+                Console.WriteLine(ex.Message);
             }
         }
     }
