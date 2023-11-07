@@ -6,9 +6,14 @@
         public double TotalInboxEmission { get; set; }
         public double TotalSentEmission { get; set; }
         public double TotalSpamEmission { get; set; }
-        private double TotalEmission;
+        private double TotalEmission { get; set; }
 
-        public void Display()
+        public void CalculateTotalEmission()
+        {
+            TotalEmission = TotalInboxEmission + TotalSentEmission + TotalSpamEmission;
+        }
+
+        public void DisplayTotalEmissionsDetail()
         {
             Console.WriteLine("Email Entity");
             Console.WriteLine($"Email Id: {EmailId}");
@@ -16,11 +21,6 @@
             Console.WriteLine($"Sent Emission: {TotalSentEmission} KG");
             Console.WriteLine($"Spam Emission: {TotalSpamEmission} KG");
             Console.WriteLine($"Total Carbon Footprint: {TotalEmission} KG");
-        }
-
-        public void CalculateTotalEmission()
-        {
-            TotalEmission = TotalInboxEmission + TotalSentEmission + TotalSpamEmission;
-        }
+        }        
     }
 }

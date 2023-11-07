@@ -7,19 +7,26 @@
             try
             {
                 EmailEntity emailEntity = new EmailEntity();
-                emailEntity.GetDetails();
+                emailEntity.GetUserInput();
 
                 ICarbonFootprintCalculator carbonFootprintCalculator = new EmailCarbonFootprintCalculator();
                 EmailEntityResponse emailEntityResponse = carbonFootprintCalculator.CalculateCarbonFootprint(emailEntity);
 
-                emailEntityResponse.Display();
-
-                Console.ReadLine();
+                emailEntityResponse.DisplayTotalEmissionsDetail();
             }
-            catch (Exception ex)
+            catch (FormatException)
             {
-                Console.WriteLine("Some Error Occured!");
-                Console.WriteLine(ex.Message);
+                Console.WriteLine("An Error Occured:");
+                Console.WriteLine("Invalid input format. Please enter valid numeric values.");
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine("An Error Occured:");
+                Console.WriteLine(exception.Message);
+            }
+            finally
+            {
+                Console.ReadLine();
             }
         }
     }

@@ -7,14 +7,14 @@
         public int SentCount { get; set; }
         public int SpamCount { get; set; }
 
-        public void GetDetails()
+        public void GetUserInput()
         {
             Console.Write("Enter the email address: ");
             EmailId = Console.ReadLine();
 
-            if(EmailId == String.Empty)
+            if(string.IsNullOrEmpty(EmailId))
             {
-                throw new Exception("Email adress can not be empty");
+                throw new Exception("Email adress can not be empty.");
             }
 
             Console.Write("Enter the number of inbox emails: ");

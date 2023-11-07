@@ -2,6 +2,6 @@
 {
     public interface ICarbonFootprintCalculator
     {
-        EmailEntityResponse CalculateCarbonFootprint(EmailEntity entity);
+        EmailEntityResponse CalculateCarbonFootprint(EmailEntity emailEntity);
     }
 }

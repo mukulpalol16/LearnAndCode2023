@@ -6,14 +6,14 @@
         private const double SentEmissionPerEmail = 0.2;
         private const double SpamEmissionPerEmail = 0.3;
 
-        public EmailEntityResponse CalculateCarbonFootprint(EmailEntity entity)
+        public EmailEntityResponse CalculateCarbonFootprint(EmailEntity emailEntity)
         {
-            double inboxEmission = (entity.InboxCount * InboxEmissionPerEmail) / 1000;
-            double sentEmission = (entity.SentCount * SentEmissionPerEmail) / 1000;
-            double spamEmission = (entity.SpamCount * SpamEmissionPerEmail) / 1000;
+            double inboxEmission = (emailEntity.InboxCount * InboxEmissionPerEmail) / 1000;
+            double sentEmission = (emailEntity.SentCount * SentEmissionPerEmail) / 1000;
+            double spamEmission = (emailEntity.SpamCount * SpamEmissionPerEmail) / 1000;
             
             EmailEntityResponse response = new EmailEntityResponse();
-            response.EmailId = entity.EmailId;
+            response.EmailId = emailEntity.EmailId;
             response.TotalInboxEmission = Math.Round(inboxEmission, 6);
             response.TotalSentEmission = Math.Round(sentEmission, 6);
             response.TotalSpamEmission = Math.Round(spamEmission, 6);
