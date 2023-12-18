@@ -20,13 +20,13 @@
                 {
                     case 1:
                         Console.Write("Enter product name: ");
-                        string productName = Console.ReadLine();
+                        string name = Console.ReadLine();
                         Console.Write("Enter product price: ");
-                        double productPrice = Convert.ToDouble(Console.ReadLine());
+                        double price = Convert.ToDouble(Console.ReadLine());
                         Console.Write("Enter product quantity: ");
-                        int productQuantity = Convert.ToInt32(Console.ReadLine());
+                        int quantity = Convert.ToInt32(Console.ReadLine());
 
-                        Product product = new Product(productName, productPrice, productQuantity);
+                        Product product = new Product(name, price, quantity);
                         inventoryManager.AddProduct(product);
 
                         Console.WriteLine("Product added successfully!");
@@ -34,8 +34,8 @@
 
                     case 2:
                         Console.WriteLine("\nCurrent Inventory:");
-                        List<Product> currentInventory = inventoryManager.GetInventory();
-                        foreach (Product currentProduct in currentInventory)
+                        List<Product> productsInInventory = inventoryManager.GetInventory();
+                        foreach (Product currentProduct in productsInInventory)
                         {
                             Console.WriteLine($"Name: {currentProduct.Name}, Price: ${currentProduct.Price}, Quantity: {currentProduct.Quantity}");
                         }
